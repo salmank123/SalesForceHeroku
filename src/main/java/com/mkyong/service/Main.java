@@ -40,6 +40,9 @@ static EnterpriseConnection connection;
       // run the different examples
       contactList = queryContacts();
       System.out.println("contactList: "+contactList);
+      
+      //Contact c = contactList.get(0);
+      
       jsonString = gson.toJson(contactList);
       System.out.println("jsonString: "+jsonString);
       

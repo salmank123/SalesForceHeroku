@@ -15,7 +15,7 @@ public class HelloWorldService {
 	@Path("/{param}")
 	public Response getMsg(@PathParam("param") String msg) {
  
-		String output = "Json Output... : " + myClass.getList();
+		String output = myClass.getList();
  
 		return Response.status(200).entity(output).build();
  

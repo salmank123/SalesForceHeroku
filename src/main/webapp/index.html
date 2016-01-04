@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Displaying json</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<script>
+
+$( document ).ready(function() {
+	getMessageAjax();
+});
+
+function getMessageAjax()
+{
+debugger;
+	$.ajax({
+		url: "http://localhost:8080/SalesForceProject/rest/hello/contact", 
+		method:'GET',
+		success: function(result){
+		 var jsonString;
+		  debugger;
+			jsonString =JSON.parse(result);		 
+			 console.log("inside for loop:" + jsonString.length);
+			 var tab="";
+			 tab="<table border ='1px solid black'>";
+			  tab= tab+ "<th style='width: 150px;'>ID</th><th style='width: 150px;''>Name</th></tr>";	
+			    for (var i = 0; i < jsonString.length; i++) {           		         
+			    	 if(jsonString[i].Id !== "" || jsonString[i].Account.Name !==""){
+			    	 tab = tab + "<tr>";	 
+			    	 tab = tab +  "<td style='width: 150px;'>" + jsonString[i].Id + "</td>";
+			    	 tab = tab + "<td style='width: 150px;'>" + jsonString[i].Account.Name + "</td>";	 
+			    	 tab =  tab + "</tr>";  
+			    	 }
+			    }
+				    tab = tab + "</table>";
+		   		    document.write (tab);
+    }});
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html> 
